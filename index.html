@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@2.51.6/dist/full.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="style/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/33a3378ded.js" crossorigin="anonymous"></script>
+    <title>AI UNIVERSE HUB</title>
+</head>
+
+<body class="container mx-auto">
+
+    <header>
+        <h1 class="text-3xl font-bold text-center mt-5">
+            AI Universe Hub
+        </h1>
+        <div class="flex justify-center">
+
+            <button class="btn mt-5" id="sortByDate">Sort By Date</button>
+        </div>
+    </header>
+    <!-- <div class="spinner my-4"></div> -->
+    <div id="spinner" class="h-screen bg-white hidden">
+        <div class="flex justify-center items-center h-full">
+            <img class="h-16 w-16 " src="https://icons8.com/preloaders/preloaders/1488/Iphone-spinner-2.gif" alt="">
+        </div>
+    </div>
+
+    <main class="">
+
+        <section class="container m-auto mt-5">
+
+            <div id="product-container" class="grid grid-cols-3 gap-4 ">
+                <!-- <div class="card w-96 bg-base-100 shadow-xl border">
+                    <figure class="px-5 pt-5">
+                        <img src=${element.image} alt="Shoes" class="rounded-xl" />
+                    </figure>
+                    <div class="card-body">
+
+                        <div id="featurs-section">
+                            <h2 class="card-title">Features</h2>
+                            <ol id="featurs-container" class="list-decimal list-inside ">
+                                <li>${element.features[0]}</li>
+                                <li>${element.features[1]}</li>
+                                <li>${element.features[2]}</li>
+    
+                            </ol>
+                        </div>
+
+
+                        <hr>
+                        <div class="flex justify-between items-end gap-2">
+
+
+                            <div>
+                                <h2 class="card-title mt-5">${element.name}</h2>
+                                <div class="flex justify-center items-center gap-2">
+                                    <i class="fa-regular fa-calendar-days"></i>
+                                    <p>${element.published_in}</p>
+                                </div>
+                            </div>
+                            <div class="card-actions">
+                                <button class="btn btn-circle bg-orange-100 border-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-400" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M5 12H19M12 5l7 7-7 7" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+
+            </div>
+        </section>
+
+
+        <section>
+
+            <!-- Put this part before  tag -->
+            <div class="">
+                <input type="checkbox" id="my-modal-32" class="modal-toggle" />
+                <div class="modal ">
+                    <label for="my-modal-32"
+                        class="z-10 btn btn-sm btn-circle bg-red-500 border-0 absolute right-36 top-9 ">✕</label>
+                    <div id="modal-container" class="modal-box  w-fit max-w-5xl px-20 h-5/6">
+                        <!-- <div class="flex justify-around items-stretch gap-4 ">
+    
+    
+                            <div class="bg-red-50 p-5 rounded-lg border border-red-300 w-1/2">
+                                <h3 id="modal-header" class="text-lg font-bold mb-8">${data.description}</h3>
+                    
+                                <div class="flex justify-around gap-3 text-center">
+                                    <div class="bg-white rounded-lg text-emerald-600 font-bold">
+                                        <p class=" p-5"> ${data?.pricing ? data.pricing[0].price : ""} Basic </p>
+                                        
+                                    </div>
+                                    <div class="bg-white   rounded-lg text-orange-600 font-bold">
+                                    <p class=" p-5 "> ${data?.pricing ? data.pricing[1].price : ""}  Pro </p>
+                    
+                                    </div>
+                                    <div class="bg-white   rounded-lg text-rose-500 font-bold">
+                                        <p class=" p-5  "> ${data?.pricing ? data.pricing[2].price : ""}  Pro </p>
+                                    </div>
+                                </div>
+                            
+                                <div class="flex justify-around items-start gap-2 mt-5">
+                                    <div>
+                                        <h3 class="text-lg font-bold">Features</h3>
+                                        <ul class="list-disc list-inside">
+                                            ${Object.values(data.features).map(feature => `
+                                                <li class="">  ${feature.feature_name}</li>
+                                            `).join('')}
+                                        </ul>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-lg font-bold">Integrations</h3>
+                                        <ul class="list-disc list-inside">
+                                            ${data.integrations == null ? "No Data Found" : data.integrations[0] ? `<li>${data.integrations[0]}</li>` : ""}
+                                            ${data.integrations == null ? "" : data.integrations[1] ? `<li>${data.integrations[1]}</li>` : ""}
+                                            ${data.integrations == null ? "" : data.integrations[2] ? `<li>${data.integrations[2]}</li>` : ""}
+                                            ${data.integrations == null ? "" : data.integrations[3] ? `<li>${data.integrations[3]}</li>` : ""}
+                                            ${data.integrations == null ? "" : data.integrations[4] ? `<li>${data.integrations[4]}</li>` : ""}
+                                            ${data.integrations == null ? "" : data.integrations[5] ? `<li>${data.integrations[5]}</li>` : ""}
+                                        </ul>
+                                    </div>
+                                </div>
+                            
+                            </div>
+                            <div class="w-1/2 flex items-center  flex-col card w-96 bg-base-100  px-5 py-8 shadow-xl border">
+                                <figure class="px-2  relative">
+                                    <img src=${data.image_link[0]} alt="Shoes" class="rounded-xl" />
+                    
+                                    ${data.accuracy.score ? `<p class="absolute right-4 top-2 bg-red-500 px-3 py-1 text-sm text-white rounded-lg">${data.accuracy.score * 100}% accuracy</p>` : ""}
+                                </figure>
+                                <h3 class="text-lg font-bold text-center mt-5">${data.input_output_examples == null ? "No Data Found" : data.input_output_examples[0].input}</h3>
+                                <p class="text-center  w-4/6">${data.input_output_examples == null ? "No Data Found" : data.input_output_examples[0].output.slice(0, 80)}</p>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+
+        <div class="flex justify-center my-8">
+            <button class="btn btn-active" id="showAllData">See More</button>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </main>
+
+
+
+
+
+
+
+
+
+
+    <script src="js/index.js"></script>
+</body>
+
+</html>

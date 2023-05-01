@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@600&family=Poppins:wght@500;600&display=swap');
+
+*{
+  font-family: 'Poppins', sans-serif;
+}
+.spinner {
+    border-top-color: transparent;
+    border-right-color: transparent;
+    border-bottom-color: transparent;
+    border-left-color: currentColor;
+    border-width: 4px;
+    border-style: solid;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+
