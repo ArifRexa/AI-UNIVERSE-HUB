@@ -49,9 +49,9 @@ function displayData(data) {
     data.forEach(element => {
         const product = document.createElement('div')
         product.innerHTML = `
-        <div class="card w-96 bg-base-100 shadow-xl border h-[470px]">
+        <div class="card lg:w-96 md:w-80 w-72  bg-base-100 shadow-xl border h-[470px]">
             <figure class="px-5 pt-5">
-                <img src=${element.image} alt="Shoes" class="rounded-xl w-84 h-48" />
+                <img src=${element.image} alt="Shoes" class="rounded-xl lg:w-80 md:w-72 lg:h-48 md:h-44 h-40" />
             </figure>
             <div class="card-body">
 
@@ -115,57 +115,64 @@ const displayDetails = data => {
 
     const modalContainer = document.getElementById("modal-container")
     modalContainer.innerHTML = `
-    <div class="flex justify-around items-stretch gap-4 py-9">
-    
-    
-        <div class="bg-red-50 p-5 rounded-lg border border-red-300 w-1/2">
-            <h3 id="modal-header" class="text-lg font-bold mb-5">${data.description}</h3>
+    <div class="flex justify-center">
+        <div class="flex md:justify-around md:items-stretch gap-4 py-9 lg:flex-nowrap flex-wrap-reverse w-[300px] md:w-fit">
+        
+        
+            <div class="bg-red-50 p-5 rounded-lg border border-red-300  lg:w-1/2 md:w-full  w-72">
+                <h3 id="modal-header" class="text-lg font-bold mb-5">${data.description}</h3>
 
-            <div class="flex justify-around gap-3 text-center">
-                <div class="bg-white rounded-lg text-emerald-600 font-bold flex items-center">
-                    <p class=" px-5 py-4 text-sm"> ${data?.pricing ? data.pricing[0].price : ""} Basic </p>
+                <div class="flex justify-start items-stretch md:flex-wrap flex-wrap xl:flex-nowrap gap-3 text-center">
+                    <div class="bg-white rounded-lg text-emerald-600 font-bold flex items-center">
+                        <p class=" px-5 py-4 text-sm"> ${data?.pricing ? data.pricing[0].price : ""} Basic </p>
+                        
+                    </div>
+                    <div class="bg-white   rounded-lg text-orange-600 font-bold flex items-center">
+                    <p class=" px-5 py-4 text-sm"> ${data?.pricing ? data.pricing[1].price : ""}  Pro </p>
+
+                    </div>
+                    <div class="bg-white   rounded-lg text-rose-500 font-bold flex items-center">
+                        <p class=" px-5 py-4 text-sm"> ${data?.pricing ? data.pricing[2].price : ""}  Pro </p>
+                    </div>
+                </div>
+            
+                <div class=" mt-5">
+                    <div class="flex justify-start items-start xl:flex-nowrap flex-wrap gap-2">
+                        <div>
+                            <h3 class="text-lg font-bold">Features</h3>
+                            <ul class="list-disc list-inside">
+                                ${Object.values(data.features).map(feature => `
+                                    <li class="text-sm">  ${feature.feature_name}</li>
+                                `).join('')}
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold">Integrations</h3>
+                            <ul class="list-disc list-inside text-sm">
+                                ${data.integrations == null ? "No Data Found" : data.integrations[0] ? `<li>${data.integrations[0]}</li>` : ""}
+                                ${data.integrations == null ? "" : data.integrations[1] ? `<li>${data.integrations[1]}</li>` : ""}
+                                ${data.integrations == null ? "" : data.integrations[2] ? `<li>${data.integrations[2]}</li>` : ""}
+                                ${data.integrations == null ? "" : data.integrations[3] ? `<li>${data.integrations[3]}</li>` : ""}
+                                ${data.integrations == null ? "" : data.integrations[4] ? `<li>${data.integrations[4]}</li>` : ""}
+                                ${data.integrations == null ? "" : data.integrations[5] ? `<li>${data.integrations[5]}</li>` : ""}
+                            </ul>
+                        </div>
+                    
+                    
+                    </div>
                     
                 </div>
-                <div class="bg-white   rounded-lg text-orange-600 font-bold flex items-center">
-                <p class=" px-5 py-4 text-sm"> ${data?.pricing ? data.pricing[1].price : ""}  Pro </p>
-
-                </div>
-                <div class="bg-white   rounded-lg text-rose-500 font-bold flex items-center">
-                    <p class=" px-5 py-4 text-sm"> ${data?.pricing ? data.pricing[2].price : ""}  Pro </p>
-                </div>
+            
             </div>
-        
-            <div class="flex justify-around items-start gap-2 mt-5">
-                <div>
-                    <h3 class="text-lg font-bold">Features</h3>
-                    <ul class="list-disc list-inside">
-                        ${Object.values(data.features).map(feature => `
-                            <li class="text-sm">  ${feature.feature_name}</li>
-                        `).join('')}
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-lg font-bold">Integrations</h3>
-                    <ul class="list-disc list-inside text-sm">
-                        ${data.integrations == null ? "No Data Found" : data.integrations[0] ? `<li>${data.integrations[0]}</li>` : ""}
-                        ${data.integrations == null ? "" : data.integrations[1] ? `<li>${data.integrations[1]}</li>` : ""}
-                        ${data.integrations == null ? "" : data.integrations[2] ? `<li>${data.integrations[2]}</li>` : ""}
-                        ${data.integrations == null ? "" : data.integrations[3] ? `<li>${data.integrations[3]}</li>` : ""}
-                        ${data.integrations == null ? "" : data.integrations[4] ? `<li>${data.integrations[4]}</li>` : ""}
-                        ${data.integrations == null ? "" : data.integrations[5] ? `<li>${data.integrations[5]}</li>` : ""}
-                    </ul>
-                </div>
-            </div>
-        
-        </div>
-        <div class="w-1/2 flex items-center  flex-col card w-96 bg-base-100  px-5 py-8 shadow-xl border">
-            <figure class="px-2  relative">
-                <img src=${data.image_link[0]} alt="Shoes" class="rounded-xl" />
+            <div class="lg:w-1/2 md:w-full w-72 flex items-center  flex-col card  bg-base-100  md:px-5 px-2 md:py-8 py-6 shadow-xl border">
+                <figure class="px-2  relative">
+                    <img src=${data.image_link[0]} alt="Shoes" class="rounded-xl" />
 
-                ${data.accuracy.score ? `<p class="absolute right-4 top-2 bg-red-500 px-3 py-1 text-sm text-white rounded-lg">${data.accuracy.score * 100}% accuracy</p>` : ""}
-            </figure>
-            <h3 class="text-lg font-bold text-center mt-5">${data.input_output_examples == null ? "No Data Found" : data.input_output_examples[0].input}</h3>
-            <p class="text-center  w-4/6">${data.input_output_examples == null ? "No Data Found" : data.input_output_examples[0].output.slice(0, 80)}</p>
+                    ${data.accuracy.score ? `<p class="absolute right-4 top-2 bg-red-500 px-3 py-1 text-sm text-white rounded-lg">${data.accuracy.score * 100}% accuracy</p>` : ""}
+                </figure>
+                <h3 class="text-lg font-bold text-center mt-5">${data.input_output_examples == null ? "No Data Found" : data.input_output_examples[0].input}</h3>
+                <p class="text-center  w-4/6">${data.input_output_examples == null ? "No Data Found" : data.input_output_examples[0].output.slice(0, 80)}</p>
+            </div>
         </div>
     </div>
 

@@ -12,8 +12,8 @@
 </head>
 
 <body class="container mx-auto">
-
-    <header>
+    <!-- ==================================== Header Section ====================================-->
+    <header class="container block mx-auto">
         <h1 class="text-3xl font-bold text-center mt-5">
             AI Universe Hub
         </h1>
@@ -29,11 +29,12 @@
         </div>
     </div>
 
+    <!-- ==================================== Main Section ====================================-->
     <main class="">
+        <!-- ==================================== Display Data Section ====================================-->
+        <section class="container mx-auto mt-5 flex justify-center">
 
-        <section class="container m-auto mt-5">
-
-            <div id="product-container" class="grid grid-cols-3 gap-4 ">
+            <div id="product-container" class="grid xl:grid-cols-3 md:grid-cols-2 md:mx-2 grid-cols-1 gap-5 ">
                 <!-- <div class="card w-96 bg-base-100 shadow-xl border">
                     <figure class="px-5 pt-5">
                         <img src=${element.image} alt="Shoes" class="rounded-xl" />
@@ -78,7 +79,7 @@
             </div>
         </section>
 
-
+        <!-- ==================================== Modal Section ====================================-->
         <section>
 
             <!-- Put this part before  tag -->
@@ -86,8 +87,9 @@
                 <input type="checkbox" id="my-modal-32" class="modal-toggle" />
                 <div class="modal ">
                     <label for="my-modal-32"
-                        class="z-10 btn btn-sm btn-circle bg-red-500 border-0 absolute right-36 top-9 ">✕</label>
-                    <div id="modal-container" class="modal-box  w-fit max-w-5xl px-20 h-5/6">
+                        class="z-10 btn btn-sm btn-circle bg-red-500 border-0 absolute right-2 top-6 md:right-[115px] md:top-7 lg:right-12 lg:top-6 xl:right-36 xl:top-7 ">✕</label>
+                    <div id="modal-container"
+                        class="modal-box  max-w-sm md:max-w-lg lg:max-w-4xl xl:max-w-5xl px-5 md:px-20 h-5/6">
                         <!-- <div class="flex justify-around items-stretch gap-4 ">
     
     
@@ -148,28 +150,11 @@
         </section>
 
 
-
         <div class="flex justify-center my-8">
             <button class="btn btn-active" id="showAllData">See More</button>
         </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     </main>
-
-
 
 
 
